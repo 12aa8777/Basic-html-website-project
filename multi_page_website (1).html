@@ -5,89 +5,474 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Frontend Developer portfolio showcasing projects, experience, and skills in web development.">
     <meta name="keywords" content="frontend developer, web developer, portfolio, HTML, CSS, JavaScript, React">
-    <meta name="author" content="Your Name">
-    <meta property="og:title" content="Frontend Developer - Your Name">
+    <meta name="author" content="Dheeraj Kumar Yadav">
+    <meta property="og:title" content="Frontend Developer - Dheeraj Kumar Yadav">
     <meta property="og:description" content="Professional frontend developer portfolio">
     <meta property="og:type" content="website">
     <title>Home - Frontend Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #64748b;
+            --accent-color: #0ea5e9;
+            --bg-color: #ffffff;
+            --surface-color: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 0.75rem;
+            --container-max-width: 1200px;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border-color: #334155;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.25);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.25), 0 2px 4px -2px rgb(0 0 0 / 0.25);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.25), 0 4px 6px -4px rgb(0 0 0 / 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            --gradient: linear-gradient( #63c7c5, #228ec1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-image: linear-gradient(90deg, rgb(28, 26, 150) 0%, rgba(0,212,255,1) 100%);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-image: linear-gradient(90deg, rgb(28, 26, 150) 0%, rgba(0,212,255,1) 100%);
+
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: black;
+        }
+
+        .logo-icon {
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(3, 3, 3);
+            font-weight: bold;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-color);
+            background-color: var(--border-color);
+        }
+
+        .breadcrumb a.active {
+            color: var(--primary-color);
+            background-color: var(--primary-color);
+            background-opacity: 1%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--border-color);
+        }
+
+       
+        main {
+            min-height: calc(100vh - 140px);
+            padding: 2rem 0;
+            background-image: linear-gradient(90deg, rgb(28, 26, 150) 0%, rgba(0,212,255,1) 100%);
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--surface-color) 0%, var(--bg-color) 100%);
+            margin-bottom: 3rem;
+            border-radius: var(--radius);
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .portfolio-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .portfolio-card h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .portfolio-card h3 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-card ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-card li {
+            padding: 0.25rem 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .portfolio-card li:before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .portfolio-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .portfolio-card a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .portfolio-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .portfolio-card hr {
+            border: none;
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 1.5rem 0;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .content-section {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .contact-info {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+
+        .contact-info a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+      
+        footer {
+            background-image: linear-gradient(90deg, rgb(28, 26, 150) 0%, rgba(0,212,255,1) 100%);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+    
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem 1rem;
+            }
+
+            .breadcrumb {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-section {
+                padding: 2rem 0;
+                margin-bottom: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .portfolio-card {
+                padding: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            nav {
+                padding: 1rem 0.75rem;
+            }
+
+            .breadcrumb a {
+                padding: 0.5rem;
+                font-size: 0.875rem;
+            }
+
+            .portfolio-card {
+                padding: 1rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+        }
+
+       
+        .loading {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
 </head>
-<body>
+<body class="loading">
     <header>
         <nav>
             <div class="logo">
-                <span class="logo-icon">■</span>
-                <span class="logo-text">Dheeraj kumar yadav</span>
+                <span class="logo-icon">DK</span>
+                <span class="logo-text">Dheeraj Kumar Yadav</span>
             </div>
             <div class="breadcrumb">
                 <a href="/multi_page_website (1).html">Home</a> / <a href="/projects.html">Projects</a> / <a href="/articles.html">Articles</a> / <a href="/contact.html">Contact</a>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
             </div>
         </nav>
     </header>
 
     <main>
-        <table border="1" style="width:100%; border-collapse: collapse;">
-            <thead>
-                <tr>
-                    <th colspan="3" style="padding: 20px;">
-                        <h1>Frontend Developer</h1>
-                    </th>
-                </tr>
-            </thead>
-            <tbody style="vertical-align: top;">
-                <tr>
-                    <td style="width: 33%; padding: 15px;">
-                        <h2>Projects</h2>
-                        <ul>
-                            <li>HTML Only Portfolio</li>
-                            <li>Calculator</li>
-                            <li>Password Generator</li>
-                            <li>To-Do List</li>
-                        </ul>
-                    </td>
-                    <td style="width: 33%; padding: 15px;">
-                        <h2>Work Experience</h2>
-                        <article>
-                            <h3>roadmap.sh</h3>
-                            <a href="https://roadmap.sh/u/dheerajkumaryadav">View my Profile</a>
-                        </article>
-                        <hr>
-                        <article>
-                            <h3>OpenSource Work</h3>
-                            <p>Haven't contributed to any open-source projects yet but very much want to.</p>
-                            <a href="https://github.com/12aa8777">Visit my GitHub Profile</a>
-                        </article>
-                    </td>
-                    <td style="width: 33%; padding: 15px;">
-                        <h2>Education</h2>
-                        <p>Languages I know:</p>
-                        <ul>
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>JavaScript</li>
-                            <li>React</li>
-                            <li>Python</li>
-                        </ul>
-                        <p>Tools I use:</p>
-                        <ul>
-                            <li>VS Code</li>
-                            <li>GitHub</li>
-                            <li>Chrome DevTools</li>
-                            <li>Figma</li>
-                        </ul>
-                        <p>Frameworks I work with:</p>
-                        <ul>
-                            <li>Bootstrap</li>
-                            <li>Tailwind CSS</li>
-                            <li>Material-UI</li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="container">
+            <div class="hero-section">
+                <h1 class="hero-title">Frontend Developer</h1>
+                <p class="hero-subtitle">Passionate about creating beautiful, responsive, and user-friendly web experiences</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <h2>🚀 Projects</h2>
+                    <ul>
+                        <li>HTML Only Portfolio</li>
+                        <li>Calculator</li>
+                        <li>Password Generator</li>
+                        <li>To-Do List</li>
+                    </ul>
+                </div>
+
+                <div class="portfolio-card">
+                    <h2>💼 Work Experience</h2>
+                    <article>
+                        <h3>roadmap.sh</h3>
+                        <a href="https://roadmap.sh/u/dheerajkumaryadav" target="_blank" rel="noopener noreferrer">View my Profile</a>
+                    </article>
+                    <hr>
+                    <article>
+                        <h3>OpenSource Work</h3>
+                        <p>Haven't contributed to any open-source projects yet but very much want to.</p>
+                        <a href="https://github.com/12aa8777" target="_blank" rel="noopener noreferrer">Visit my GitHub Profile</a>
+                    </article>
+                </div>
+
+                <div class="portfolio-card">
+                    <h2>🎓 Skills & Education</h2>
+                    <h3>Languages I know:</h3>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>React</li>
+                        <li>Python</li>
+                    </ul>
+                    <h3>Tools I use:</h3>
+                    <ul>
+                        <li>VS Code</li>
+                        <li>GitHub</li>
+                        <li>Chrome DevTools</li>
+                        <li>Figma</li>
+                    </ul>
+                    <h3>Frameworks I work with:</h3>
+                    <ul>
+                        <li>Bootstrap</li>
+                        <li>Tailwind CSS</li>
+                        <li>Material-UI</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <p>© Dheeraj Kumar Yadav 2025</p>
+        <div class="container">
+            <p>&copy; Dheeraj Kumar Yadav 2025</p>
+        </div>
     </footer>
 </body>
 </html>
